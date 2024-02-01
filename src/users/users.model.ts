@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
 import { hash} from "bcryptjs";
 import { ApiProperty } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
 
 @Entity({ name: 'users' })
 export class User  {
@@ -13,6 +14,7 @@ export class User  {
     @Column({ type: 'varchar', length: 300, unique: true, nullable: false})
     email: string;
 
+    @Exclude()
     @ApiProperty({example:'123', description:'Password'})
     @Column({ type: 'varchar', length: 60, nullable: false})
     password: string;
