@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, ManyToMany, JoinTable } from 'typeorm';
 import { hash} from "bcryptjs";
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
+import { Product } from './product.model';
 
 @Entity({ name: 'users' })
 export class User  {
@@ -30,6 +31,10 @@ export class User  {
     @ApiProperty({example:'+375111111111', description:'User\' phone number'})
     @Column({ type: 'varchar', length: 100 })
     phoneNumber: string;
+
+    @ManyToMany(() => Product)
+    @JoinTable()
+    purchases: Product[]
 
     @BeforeInsert()
     public async hashPassword() {

@@ -6,6 +6,8 @@ import { AuthModule } from './auth/auth.module';
 import { dataSourceOptions } from "db/data-source";
 import { GuardModule } from './guard/guard.module';
 import { ModelsModule } from './models/models.module';
+import { ProductModule } from './product/product.module';
+
 
 @Module({
     controllers: [],
@@ -18,7 +20,8 @@ import { ModelsModule } from './models/models.module';
         UsersModule,
         AuthModule,
         GuardModule,
-        ModelsModule
+        ModelsModule,
+        ProductModule
     ]
 })
 export class AppModule {
