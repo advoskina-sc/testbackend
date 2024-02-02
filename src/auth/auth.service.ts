@@ -1,8 +1,8 @@
 import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { LoginUserDto } from 'src/users/dto/login-user.dto';
-import { RegisterUserDto } from 'src/users/dto/register-user.dto';
-import { User } from 'src/users/users.model';
+import { LoginUserDto } from 'src/models/dto/login-user.dto';
+import { RegisterUserDto } from 'src/models/dto/register-user.dto';
+import { User } from 'src/models/users.model';
 import { UsersService } from 'src/users/users.service';
 import {compare} from 'bcryptjs'
 

@@ -5,6 +5,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { AuthModule } from './auth/auth.module';
 import { dataSourceOptions } from "db/data-source";
 import { GuardModule } from './guard/guard.module';
+import { ModelsModule } from './models/models.module';
 
 @Module({
     controllers: [],
@@ -16,7 +17,8 @@ import { GuardModule } from './guard/guard.module';
         TypeOrmModule.forRoot(dataSourceOptions),
         UsersModule,
         AuthModule,
-        GuardModule
+        GuardModule,
+        ModelsModule
     ]
 })
 export class AppModule {
