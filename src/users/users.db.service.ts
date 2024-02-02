@@ -3,22 +3,22 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../models/users.model';
 import { LoginUserDto } from '../models/dto/login-user.dto';
-import { UsersDbService } from './users.db.service';
 
 @Injectable()
-export class UsersService {
+export class UsersDbService {
 
-    constructor(private userDbService : UsersDbService) {}
+    constructor(@InjectRepository(User)  private usersRepository: Repository<User>) {}
 
     getUserInfo(id): Promise<User | null> {
-        return this.userDbService.getUserInfo(id);
+        return this.usersRepository.findOneBy({ id });
     }
 
     getUserByEmail(email: string): Promise<User | null> {
-        return this.userDbService.getUserByEmail(email);
+        return this.usersRepository.findOneBy({email});
     }
 
     create(userDto: LoginUserDto) : Promise<User | null> {
-        return this.userDbService.create(userDto);
+        const user = this.usersRepository.create(userDto);
+        return this.usersRepository.save(user);
     }
 }

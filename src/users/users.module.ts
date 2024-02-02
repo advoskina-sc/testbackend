@@ -6,10 +6,11 @@ import { User } from '../models/users.model';
 import { AuthModule } from 'src/auth/auth.module';
 import { GuardModule } from 'src/guard/guard.module';
 import { ModelsModule } from 'src/models/models.module';
+import { UsersDbService } from './users.db.service';
 
 @Module({
   controllers: [UsersController],
-  providers: [UsersService],
+  providers: [UsersService, UsersDbService],
   imports: [
     TypeOrmModule.forFeature([User]),
     forwardRef(() => AuthModule),
