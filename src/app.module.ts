@@ -4,6 +4,7 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AuthModule } from './auth/auth.module';
 import { dataSourceOptions } from "db/data-source";
+import { GuardModule } from './guard/guard.module';
 
 @Module({
     controllers: [],
@@ -14,7 +15,8 @@ import { dataSourceOptions } from "db/data-source";
         }),
         TypeOrmModule.forRoot(dataSourceOptions),
         UsersModule,
-        AuthModule
+        AuthModule,
+        GuardModule
     ]
 })
 export class AppModule {
