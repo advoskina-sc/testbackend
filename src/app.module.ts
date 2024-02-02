@@ -7,6 +7,8 @@ import { dataSourceOptions } from "db/data-source";
 import { GuardModule } from './guard/guard.module';
 import { ModelsModule } from './models/models.module';
 import { ProductModule } from './product/product.module';
+import { ServeStaticModule } from "@nestjs/serve-static";
+import * as path from "path";
 
 
 @Module({
@@ -17,6 +19,9 @@ import { ProductModule } from './product/product.module';
             envFilePath: `.env`
         }),
         TypeOrmModule.forRoot(dataSourceOptions),
+        ServeStaticModule.forRoot({
+            rootPath: path.join(__dirname, '..', '..', 'static')
+        }),
         UsersModule,
         AuthModule,
         GuardModule,

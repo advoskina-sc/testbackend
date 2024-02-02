@@ -32,6 +32,9 @@ export class User  {
     @Column({ type: 'varchar', length: 100 })
     phoneNumber: string;
 
+    @Column({ type: 'varchar', nullable: true })
+    image: string;
+
     @ManyToMany(() => Product)
     @JoinTable()
     purchases: Product[]
