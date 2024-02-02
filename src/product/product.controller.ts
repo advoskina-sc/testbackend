@@ -13,7 +13,7 @@ export class ProductController {
 
     @ApiOperation({summary: 'Create product'})
     @ApiResponse({status:200, type: Product})
-    //@UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard)
     @Post()
     register(@Body() createProductDto: CreateProductDto) {
         return this.productService.create(createProductDto);
@@ -21,7 +21,7 @@ export class ProductController {
 
     @ApiOperation({summary: 'Get all products'})
     @ApiResponse({status:200, type: [Product]})
-  //  @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard)
     @Get()
     getAll() {
         return this.productService.getProducts();
