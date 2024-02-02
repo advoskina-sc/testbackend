@@ -2,8 +2,8 @@ import { Controller, Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { User } from "./users/users.model";
 import { AuthModule } from './auth/auth.module';
+import { dataSourceOptions } from "db/data-source";
 
 @Module({
     controllers: [],
@@ -12,17 +12,7 @@ import { AuthModule } from './auth/auth.module';
         ConfigModule.forRoot({
             envFilePath: `.env`
         }),
-        TypeOrmModule.forRoot({
-            type: 'postgres',
-            host: process.env.POSTGRES_HOST,
-            port: Number(process.env.POSTGRES_PORT),
-            username: process.env.POSTGRES_USER,
-            password: process.env.POSTGRES_PASSWORD,
-            database: process.env.POSTGRES_DB,
-            entities: [User],
-            synchronize: true,
-            autoLoadEntities: true
-          }),
+        TypeOrmModule.forRoot(dataSourceOptions),
         UsersModule,
         AuthModule
     ]

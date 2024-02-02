@@ -1,7 +1,8 @@
 import { NestFactory, Reflector } from "@nestjs/core";
-import { AppModule } from "./app.module";
+
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { ClassSerializerInterceptor, ValidationPipe } from "@nestjs/common";
+import { AppModule } from "./app.module";
 
 async function start() {
     const PORT = process.env.PORT;
