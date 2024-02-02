@@ -1,11 +1,12 @@
 import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateProductDto } from 'src/models/dto/create-product.dto';
 import { Product } from 'src/models/product.model';
 import { ProductService } from './product.service';
 import { JwtAuthGuard } from 'src/guard/jwt-auth.guard';
 import { CreatePurchaseDto } from 'src/models/dto/create-purchase.dto';
 
+@ApiTags('Products')
 @Controller('product')
 export class ProductController {
 
